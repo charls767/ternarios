@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagramas Ternarios</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- PANEL DE CONTROL -->
+    <aside class="controls">
+
+        <h2>Configuración</h2>
+
+        <!-- Sección 1: Configuración general -->
+        <section>
+            <h3>General</h3>
+
+            <label>
+                Escala
+                <input type="number" id="scale" min="1" value="100">
+            </label>
+
+            <label>
+                Eje izquierdo
+                <input type="text" id="label-left" value="A">
+            </label>
+
+            <label>
+                Eje derecho
+                <input type="text" id="label-right" value="B">
+            </label>
+
+            <label>
+                Eje inferior
+                <input type="text" id="label-bottom" value="C">
+            </label>
+        </section>
+
+        <!-- Sección 2: Gestión de puntos -->
+        <section>
+            <h3>Puntos</h3>
+
+            <label>
+                Serie
+                <div class="series-selector">
+                    <select id="current-series">
+                        <option value="Serie 1">Serie 1</option>
+                    </select>
+                    <input type="text" id="new-series-name" placeholder="Nueva serie">
+                    <button id="add-series">+</button>
+                </div>
+            </label>
+
+            <div class="point-row">
+                <input type="number" id="val-a" placeholder="A">
+                <input type="number" id="val-b" placeholder="B">
+                <input type="number" id="val-c" placeholder="C">
+            </div>
+
+            <label>
+                Color
+                <input type="color" id="point-color" value="#ff0000">
+            </label>
+
+            <label>
+                Tamaño
+                <input type="number" id="point-size" min="1" value="60">
+            </label>
+
+            <label>
+                Marcador
+                <select id="point-marker">
+                    <option value="o">Círculo</option>
+                    <option value="s">Cuadrado</option>
+                    <option value="D">Diamante</option>
+                    <option value="^">Triángulo</option>
+                </select>
+            </label>
+
+            <button id="add-point">Añadir punto</button>
+
+            <div id="point-warning" class="warning"></div>
+
+            <!-- Tabla de puntos -->
+            <div class="points-table-container">
+                <h4>Puntos Añadidos</h4>
+                <table id="points-table" class="points-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Serie</th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>Color</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="no-points-msg" class="no-points-msg">Sin puntos añadidos</p>
+            </div>
+        </section>
+
+        <!-- Sección 3: Líneas -->
+        <section>
+            <h3>Líneas</h3>
+
+            <label class="inline">
+                <input type="checkbox" id="lines-enabled">
+                Conectar puntos
+            </label>
+
+            <label>
+                Color
+                <input type="color" id="line-color" value="#000000">
+            </label>
+
+            <label>
+                Grosor
+                <input type="number" id="line-width" min="1" value="2">
+            </label>
+
+            <label>
+                Estilo
+                <select id="line-style">
+                    <option value="-">Continua</option>
+                    <option value="--">Discontinua</option>
+                    <option value=":">Punteada</option>
+                    <option value="-.">Guión-punto</option>
+                </select>
+            </label>
+        </section>
+
+        <!-- Sección 4: Acciones -->
+        <section>
+            <button id="update">Actualizar diagrama</button>
+            <button id="clear">Limpiar</button>
+            
+            <!-- Descargas -->
+            <div class="download-section">
+                <h4>Descargar</h4>
+                <button id="download-png" class="btn-download">📥 PNG</button>
+                <button id="download-jpg" class="btn-download">📥 JPG</button>
+                <button id="download-pdf" class="btn-download">📥 PDF</button>
+            </div>
+        </section>
+
+    </aside>
+
+    <!-- VISUALIZACIÓN -->
+    <main class="viewer">
+        <div id="spinner" class="spinner">Generando…</div>
+        <div id="error" class="error"></div>
+        <img id="result" alt="Diagrama ternario">
+    </main>
+
+</div>
+
+<script src="/static/scripts.js"></script>
+</body>
+</html>
