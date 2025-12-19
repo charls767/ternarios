@@ -198,6 +198,10 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/docs", methods=["GET"])
+def docs():
+    return render_template("docs.html")
+
 @app.route("/plot", methods=["POST"])
 def plot():
     try:

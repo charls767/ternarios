@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación - Diagramas Ternarios</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/docs-style.css">
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <a href="/" class="brand-link">📊 Ternarios</a>
+        </div>
+        
+        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+        
+        <ul class="navbar-menu" id="navbar-menu">
+            <li class="navbar-item">
+                <a href="/" class="navbar-link">Inicio</a>
+            </li>
+            
+            <li class="navbar-item dropdown">
+                <a href="#" class="navbar-link dropdown-toggle" id="docs-toggle">
+                    Documentación
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                
+                <ul class="dropdown-menu" id="docs-menu">
+                    <li><a href="#introduccion" class="dropdown-item">Introducción</a></li>
+                    <li><a href="#guia-uso" class="dropdown-item">Guía de Uso</a></li>
+                    <li><a href="#ejemplos" class="dropdown-item">Ejemplos</a></li>
+                    <li><a href="#faq" class="dropdown-item">Preguntas Frecuentes</a></li>
+                    <li><a href="#api" class="dropdown-item">API / Referencia Técnica</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="docs-container">
+    <aside class="docs-sidebar">
+        <h3>Contenido</h3>
+        <ul class="toc">
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#guia-uso">Guía de Uso</a></li>
+            <li><a href="#ejemplos">Ejemplos</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
+            <li><a href="#api">API / Referencia Técnica</a></li>
+        </ul>
+    </aside>
+
+    <main class="docs-content">
+
+        <!-- ===============================================
+             SECCIÓN 1: INTRODUCCIÓN
+             =============================================== -->
+        <section id="introduccion" class="doc-section">
+            <h1>1. Introducción</h1>
+
+            <h2>1.1 ¿Qué es un diagrama ternario?</h2>
+
+            <h3>Definición formal</h3>
+            <p>Un diagrama ternario, también conocido como diagrama de composición triangular o gráfico de tres vías, es una representación gráfica que visualiza la composición de un sistema mediante tres variables que son interdependientes. Se utilizan coordenadas baricéntricas (también llamadas coordenadas trilineales) para proyectar datos tridimensionales en una superficie bidimensional.</p>
+
+            <h3>Qué representa cada eje</h3>
+            <p>El diagrama ternario está conformado por un triángulo equilátero. Cada uno de los tres ejes representa una de las tres variables que componen el sistema analizado. Tradicionalmente se denominan como A, B y C, aunque pueden recibir nombres específicos según el contexto de uso. Cada eje se extiende desde cero (en el vértice opuesto) hasta el valor máximo (en el vértice correspondiente). Las líneas de referencia internas del triángulo facilitan la lectura de las proporciones de cada componente.</p>
+
+            <h3>Relación entre los tres componentes</h3>
+            <p>En un diagrama ternario, los tres componentes siempre mantienen una relación de proporcionalidad constante: la suma de las tres variables debe ser igual al cien por ciento (o a una escala predefinida, típicamente 100). Esta restricción es fundamental y define la naturaleza matemática del sistema. Cualquier punto dentro del triángulo representa una única combinación válida de los tres componentes. Los vértices del triángulo representan composiciones puras de un solo componente.</p>
+
+            <h2>1.2 ¿Para qué se utilizan los diagramas ternarios?</h2>
+
+            <h3>Aplicaciones científicas reales</h3>
+            <p>Los diagramas ternarios son herramientas fundamentales en múltiples disciplinas científicas y técnicas. Su utilidad radica en la capacidad de visualizar simultáneamente tres variables interdependientes en un espacio bidimensional, permitiendo identificar patrones, tendencias y relaciones que serían difíciles de discernir mediante tablas de datos o gráficos convencionales.</p>
+
+            <h3>Ejemplos de áreas de uso</h3>
+            <ul>
+                <li><strong>Geología y Petrogénesis:</strong> Clasificación de minerales y rocas según su composición mineralógica. Diagramas QAP (feldespato alcalino-cuarzo-feldespato plagioclasa) para clasificación de rocas ígneas.</li>
+                <li><strong>Química y Materiales:</strong> Análisis de aleaciones metálicas, sistemas de disoluciones, y composición de mezclas ternarias.</li>
+                <li><strong>Edafología y Ciencias del Suelo:</strong> Clasificación textural del suelo mediante contenidos de arena, limo y arcilla (triángulo de texturas de suelo).</li>
+                <li><strong>Ciencias de la Alimentación:</strong> Análisis de composición de alimentos, proporciones de ingredientes, y optimización de formulaciones.</li>
+                <li><strong>Metalurgia y Tratamiento de Materiales:</strong> Representación de diagramas de fase ternarios para sistemas de tres elementos.</li>
+                <li><strong>Química Analítica:</strong> Evaluación de mezclas y pureza de compuestos mediante análisis de composición relativa.</li>
+                <li><strong>Ingeniería de Procesos:</strong> Optimización de formulaciones en industrias químicas y farmacéuticas.</li>
+            </ul>
+
+            <h2>1.3 Alcance de esta aplicación</h2>
+
+            <h3>Qué permite hacer la herramienta</h3>
+            <p>Esta herramienta permite:</p>
+            <ul>
+                <li>Crear diagramas ternarios personalizados con escalas ajustables.</li>
+                <li>Ingresar múltiples puntos de datos y visualizarlos simultáneamente.</li>
+                <li>Organizar datos en series distintas para comparación y análisis.</li>
+                <li>Conectar puntos de una misma serie mediante líneas para visualizar tendencias.</li>
+                <li>Asignar colores y marcadores específicos a cada serie para mejorar la legibilidad.</li>
+                <li>Exportar diagramas en formatos estándar para documentación e informes.</li>
+                <li>Personalizar etiquetas de ejes según la aplicación específica.</li>
+            </ul>
+
+            <h3>Qué tipo de análisis soporta</h3>
+            <p>La herramienta soporta análisis de composiciones ternarias que requieran visualización bidimensional de sistemas de tres variables. Incluye la capacidad de analizar múltiples muestras o puntos de datos en un mismo diagrama, comparar series diferentes de mediciones, y identificar agrupaciones o tendencias en los datos.</p>
+
+            <h3>Qué NO pretende reemplazar</h3>
+            <p>Esta herramienta no es un software de análisis estadístico avanzado, no realiza cálculos matemáticos sobre los datos, no interpreta automáticamente resultados, no genera informes automáticos, y no sustituye el criterio profesional del usuario en la interpretación de resultados. Es fundamentalmente una herramienta de visualización que requiere que el usuario proporcione datos ya validados y sea responsable de su interpretación.</p>
+
+            <h2>1.4 Público objetivo</h2>
+
+            <h3>Perfil de usuario esperado</h3>
+            <p>La herramienta está diseñada para profesionales, estudiantes y investigadores que requieran visualizar datos ternarios en el contexto de sus disciplinas. Esto incluye geólogos, químicos, ingenieros, científicos de materiales, edafólogos, y profesionales de campos relacionados.</p>
+
+            <h3>Nivel técnico recomendado</h3>
+            <p>Se recomienda que el usuario tenga familiaridad básica con conceptos de composición ternaria y proporción de componentes en su campo específico. No se requiere conocimiento técnico avanzado en computación, pero sí comprensión conceptual de sistemas de tres variables y su representación gráfica.</p>
+
+        </section>
+
+        <!-- ===============================================
+             SECCIÓN 2: GUÍA DE USO
+             =============================================== -->
+        <section id="guia-uso" class="doc-section">
+            <h1>2. Guía de Uso</h1>
+
+            <h2>2.1 Ingreso de datos</h2>
+
+            <h3>Cómo se ingresan los datos</h3>
+            <p>Los datos se ingresan a través de un panel de control en el lado izquierdo de la interfaz. El usuario debe proporcionar tres valores numéricos correspondientes a los tres componentes (típicamente denominados A, B y C). Los campos de entrada aceptan valores numéricos positivos. Cada conjunto de tres valores representa un único punto en el diagrama ternario.</p>
+
+            <h3>Tipos de entrada esperados</h3>
+            <p>Los valores de entrada deben ser números reales no negativos. La herramienta acepta tanto valores enteros como decimales. No se aceptan valores negativos, ya que carecen de sentido en el contexto de análisis de composición. Los valores pueden variar según la escala configurada, que puede ajustarse globalmente para toda la visualización.</p>
+
+            <h3>Ejemplo conceptual (sin valores numéricos)</h3>
+            <p>Para ingresar un punto de datos, el usuario selecciona primero la serie a la que pertenece el punto (por ejemplo, "Muestra A" o "Experimento 1"). Luego, ingresa los tres valores de componentes en los campos etiquetados como A, B y C respectivamente. Estos valores deben cumplir la restricción de suma total. El sistema entonces procesa la información y ubica el punto en la posición correcta dentro del triángulo del diagrama.</p>
+
+            <h2>2.2 Formato y validación</h2>
+
+            <h3>Reglas que deben cumplir los datos</h3>
+            <p>Todos los valores de entrada deben ser números reales no negativos. Cada conjunto de tres valores debe cumplir la siguiente restricción fundamental: A + B + C = Escala (donde Escala es el valor configurado, típicamente 100). Cualquier punto que no cumpla esta restricción no será procesado y la herramienta notificará al usuario del error.</p>
+
+            <h3>Normalización y suma de componentes</h3>
+            <p>La normalización es un concepto crítico en diagramas ternarios. La herramienta asume que los datos ya están normalizados por el usuario, es decir, que la suma de los tres componentes es exactamente igual al valor de escala especificado. Si los datos no están normalizados previamente, el usuario debe normalizarlos dividiéndolos por su suma total y multiplicándolos por el valor de escala deseado. La herramienta no realiza normalización automática.</p>
+
+            <h3>Qué ocurre si los datos son inválidos</h3>
+            <p>Si los datos ingresados no cumplen la restricción de suma, la interfaz mostrará un mensaje de error indicando el problema. El punto no será agregado al diagrama hasta que los datos sean corregidos. Si se ingresan valores negativos, el sistema los rechazará. Si se ingresan valores no numéricos, aparecerá un mensaje indicando el formato esperado.</p>
+
+            <h2>2.3 Visualización del diagrama</h2>
+
+            <h3>Cómo se representan los puntos</h3>
+            <p>Cada punto de datos se representa como un símbolo gráfico (círculo, cuadrado, diamante o triángulo) dentro del triángulo del diagrama. Los puntos pertenecientes a la misma serie comparten el mismo color, facilitando la identificación visual de grupos de datos. El tamaño del símbolo es configurable y puede ajustarse según las preferencias del usuario.</p>
+
+            <h3>Significado de la posición en el triángulo</h3>
+            <p>La posición de un punto dentro del triángulo refleja directamente sus proporciones de componentes. Un punto ubicado en el vértice superior representa una composición pura del componente A (100% A, 0% B, 0% C). Un punto en el vértice inferior derecho representa composición pura del componente B. Un punto en el vértice inferior izquierdo representa composición pura del componente C. Cualquier punto interior representa una mezcla de los tres componentes, con proporciones determinadas por su distancia perpendicular a cada lado del triángulo.</p>
+
+            <h3>Lectura correcta del gráfico</h3>
+            <p>Para leer un punto en el diagrama, se trazan líneas mentales (o se utilizan las líneas de referencia del gráfico) paralelas a cada lado del triángulo, comenzando desde el punto. Estas líneas intersectarán los ejes opuestos, indicando el valor de cada componente. Alternativamente, se puede usar la escala de porcentaje presente en los ejes del diagrama para estimar directamente las proporciones de cada componente.</p>
+
+            <h2>2.4 Anotaciones y elementos gráficos</h2>
+
+            <h3>Texto</h3>
+            <p>La herramienta permite personalizare el texto de las etiquetas de los ejes. Se pueden modificar los nombres de los componentes A, B y C para reflejar el contexto específico del análisis (por ejemplo, "Cuarzo", "Feldespato", "Mica" en una aplicación geológica).</p>
+
+            <h3>Etiquetas</h3>
+            <p>Los puntos pueden ser etiquetados con identificadores para facilitar la referencia cruzada con datos fuente. Cada punto ingresado recibe un identificador único dentro del sistema. Las series pueden recibir nombres descriptivos para facilitar su identificación visual.</p>
+
+            <h3>Leyendas</h3>
+            <p>El diagrama incluye una leyenda que indica las series presentes en el gráfico, los colores asignados a cada serie, y los marcadores utilizados. Esta leyenda facilita la interpretación visual del diagrama y la identificación rápida de agrupaciones.</p>
+
+            <h3>Buenas prácticas</h3>
+            <ul>
+                <li>Utilizar nombres descriptivos y breves para las series de datos.</li>
+                <li>Personalizar las etiquetas de ejes con términos específicos de su disciplina.</li>
+                <li>Asignar colores contrastantes a series diferentes para mejorar la visibilidad.</li>
+                <li>Incluir una leyenda clara en todo diagrama exportado.</li>
+                <li>Documentar la escala utilizada en el diagrama.</li>
+                <li>Indicar las unidades o naturales de los datos si corresponde.</li>
+            </ul>
+
+            <h2>2.5 Errores comunes y cómo evitarlos</h2>
+
+            <h3>Error: "Los valores no suman la escala"</h3>
+            <p><strong>Identificación:</strong> El sistema rechaza el punto y muestra un mensaje de error.</p>
+            <p><strong>Causa:</strong> Los tres valores ingresados no suman exactamente el valor de escala configurado.</p>
+            <p><strong>Solución:</strong> Revisar los datos ingresados. Verificar que A + B + C = Escala. Ajustar los valores si es necesario.</p>
+
+            <h3>Error: "Valores negativos ingresados"</h3>
+            <p><strong>Identificación:</strong> El sistema rechaza la entrada.</p>
+            <p><strong>Causa:</strong> Se intentó ingresar un número negativo.</p>
+            <p><strong>Solución:</strong> Los datos de composición no pueden ser negativos. Utilizar solo valores positivos o cero.</p>
+
+            <h3>Error: "El diagrama no se actualiza"</h3>
+            <p><strong>Identificación:</strong> Se ingresaron datos pero el diagrama no cambia.</p>
+            <p><strong>Causa:</strong> No se presionó el botón de actualización después de cambiar los datos.</p>
+            <p><strong>Solución:</strong> Hacer clic en el botón "Actualizar diagrama" para procesar los cambios.</p>
+
+            <h3>Error: "Puntos no aparecen donde se espera"</h3>
+            <p><strong>Identificación:</strong> Los puntos aparecen en posiciones inesperadas en el diagrama.</p>
+            <p><strong>Causa:</strong> Posible confusión con la escala o malinterpretación de la lectura del diagrama.</p>
+            <p><strong>Solución:</strong> Verificar que los datos ingresados son correctos. Revisar la posición leyendo cuidadosamente desde el punto hacia los ejes del triángulo.</p>
+
+            <h3>Error: "Se perdieron los datos"</h3>
+            <p><strong>Identificación:</strong> Los puntos previos han desaparecido del diagrama.</p>
+            <p><strong>Causa:</strong> Presionar el botón "Limpiar" elimina todos los puntos.</p>
+            <p><strong>Solución:</strong> Si fue accidental, recargar la página sin guardar cambios. Para futuro, se recomienda exportar el diagrama antes de hacer limpiezas.</p>
+
+        </section>
+
+        <!-- ===============================================
+             SECCIÓN 3: EJEMPLOS
+             =============================================== -->
+        <section id="ejemplos" class="doc-section">
+            <h1>3. Ejemplos</h1>
+
+            <h2>Ejemplo 1 – Composición Simple de Tres Componentes</h2>
+
+            <h3>Contexto del problema</h3>
+            <p>Se desea visualizar la composición de una mezcla ternaria simple que consta de tres elementos químicos diferentes. El objetivo es entender cómo los diagramas ternarios permiten visualizar proporciones de tres componentes en un espacio bidimensional.</p>
+
+            <h3>Qué representan los tres componentes</h3>
+            <p>El componente A representa el porcentaje relativo del primer elemento químico, el componente B representa el segundo elemento, y el componente C representa el tercero. Estos tres componentes interactúan químicamente, pero en este ejemplo simple solo nos interesa su proporción relativa.</p>
+
+            <h3>Qué se espera observar en el diagrama</h3>
+            <p>Se espera observar un único punto dentro del triángulo, ubicado a una distancia de cada lado proporcional al contenido de cada componente. El punto debe estar completamente dentro del triángulo (nunca en los vértices, a menos que sea composición pura).</p>
+
+            <h3>Interpretación del resultado</h3>
+            <p>La posición del punto en el diagrama revela inmediatamente las proporciones de la mezcla. Un observador experimentado puede leer las proporciones aproximadas sin necesidad de cálculos, simplemente observando la posición relativa del punto respecto a los ejes y líneas de referencia del diagrama.</p>
+
+            <h3>Error común asociado a este ejemplo</h3>
+            <p>Un error frecuente es no normalizar correctamente los datos antes de ingresarlos. Si se ingresan valores que no suman la escala especificada, el sistema rechazará el punto. Esto es especialmente importante si los datos provienen de mediciones en el mundo real que podrían tener pequeños errores de redondeo.</p>
+
+            <hr>
+
+            <h2>Ejemplo 2 – Análisis Comparativo de Múltiples Muestras</h2>
+
+            <h3>Contexto del problema</h3>
+            <p>Se cuenta con múltiples muestras del mismo tipo de material, tomadas de diferentes ubicaciones o en diferentes momentos. Se desea comparar sus composiciones para identificar similitudes y diferencias.</p>
+
+            <h3>Qué representan los tres componentes</h3>
+            <p>En un contexto de análisis de suelos, por ejemplo, el componente A podría representar arena, B podría representar limo, y C podría representar arcilla. Cada muestra tiene una proporción diferente de estos tres componentes minerales.</p>
+
+            <h3>Qué se espera observar en el diagrama</h3>
+            <p>Se espera observar múltiples puntos distribuidos en diferentes áreas del diagrama, cada uno representando una muestra. Si las muestras son similares en composición, los puntos tenderán a agruparse en una región. Si hay variabilidad composicional, los puntos estarán más dispersos.</p>
+
+            <h3>Interpretación del resultado</h3>
+            <p>La distribución espacial de los puntos revela patrones de variación composicional. Agrupamientos de puntos indican composiciones similares. Tendencias lineales pueden indicar series de transformación o mezclas binarias. Puntos aislados podrían representar anomalías o composiciones únicas.</p>
+
+            <h3>Error común asociado a este ejemplo</h3>
+            <p>Un error común es no usar series diferentes para muestras tomadas de contextos distintos, lo que dificulta la visualización de patrones. Se recomienda agrupar muestras relacionadas en la misma serie y usar series diferentes para categorías distintas de muestras.</p>
+
+            <hr>
+
+            <h2>Ejemplo 3 – Análisis de Variación Composicional en Sistema Real</h2>
+
+            <h3>Contexto del problema</h3>
+            <p>En un contexto de control de calidad industrial, se monitorea la composición de un producto químico o una aleación metálica durante su proceso de fabricación. Se han recolectado muestras en diferentes puntos del proceso y se desea visualizar si la composición permanece dentro de rangos aceptables.</p>
+
+            <h3>Qué representan los tres componentes</h3>
+            <p>Los tres componentes representan los tres elementos principales que conforman el producto. En una aleación ternaria, podrían ser tres metales diferentes. En un sistema farmacéutico, podrían ser tres ingredientes activos o principios activos.</p>
+
+            <h3>Qué se espera observar en el diagrama</h3>
+            <p>Se espera observar que todos los puntos de muestras "aceptables" se agrupan en una región específica del diagrama, definida por los límites de especificación. Las muestras fuera de esta región indicarían composiciones fuera de especificación. Puede esperarse una ligera dispersión de puntos dentro de la región aceptable debido a variabilidad natural del proceso.</p>
+
+            <h3>Interpretación del resultado</h3>
+            <p>Una concentración de puntos en una región restringida del diagrama indica control composicional efectivo del proceso. Una dispersión excesiva o puntos fuera de la zona esperada indican problemas potenciales en el proceso que requieren investigación. Tendencias direccionales pueden indicar desviaciones sistemáticas que empeoran con el tiempo.</p>
+
+            <h3>Error común asociado a este ejemplo</h3>
+            <p>Un error crítico es no actualizar el diagrama después de ingresar nuevas muestras, llevando a conclusiones basadas en datos incompletos. Además, es importante usar siempre la misma escala y perspectiva cuando se comparan diagramas de diferentes períodos de tiempo o condiciones para garantizar comparabilidad.</p>
+
+        </section>
+
+        <!-- ===============================================
+             SECCIÓN 4: FAQ
+             =============================================== -->
+        <section id="faq" class="doc-section">
+            <h1>4. Preguntas Frecuentes (FAQ)</h1>
+
+            <h2>¿Por qué mis datos no aparecen en el diagrama?</h2>
+            <p><strong>Causa probable:</strong> Hay varios motivos por los que un punto de datos podría no aparecer:</p>
+            <ul>
+                <li>Los valores no cumplen la restricción de suma (A + B + C ≠ Escala).</li>
+                <li>No presionó el botón "Actualizar diagrama" después de ingresar los datos.</li>
+                <li>Los valores contienen caracteres no numéricos.</li>
+                <li>Uno o más valores son negativos.</li>
+            </ul>
+            <p><strong>Solución:</strong> Verifique cada una de estas condiciones. El sistema debe mostrar un mensaje de error si hay un problema con los datos. Revise el panel de entrada y asegúrese de que todos los valores sean números válidos y que la suma sea correcta.</p>
+            <p><strong>Recomendación práctica:</strong> Mantenga un registro de los valores que ingresa antes de hacer clic en "Agregar punto" para poder verificar fácilmente la suma.</p>
+
+            <h2>¿Qué sucede si los valores no suman 100?</h2>
+            <p><strong>Causa probable:</strong> Los datos no están correctamente normalizados para la escala especificada (típicamente 100).</p>
+            <p><strong>Solución:</strong> Si sus datos originales no suman 100, debe normalizarlos. La fórmula es: Valor normalizado = (Valor original / Suma total de originales) × Escala deseada. Por ejemplo, si tiene valores que suman 50, multiplique cada uno por 2 para que sumen 100.</p>
+            <p><strong>Recomendación práctica:</strong> Realice siempre la normalización antes de ingresar los datos en la herramienta. Esto evita errores de redondeo y asegura que los datos sean procesados correctamente.</p>
+
+            <h2>¿Qué formatos de datos son aceptados?</h2>
+            <p><strong>Respuesta:</strong> La herramienta acepta:</p>
+            <ul>
+                <li>Números enteros (ej: 25, 50, 75)</li>
+                <li>Números decimales (ej: 25.5, 50.3, 74.2)</li>
+                <li>El separador decimal es el punto (.)</li>
+                <li>Solo números positivos o cero</li>
+            </ul>
+            <p><strong>No se aceptan:</strong> Números negativos, valores no numéricos, comas como separador decimal (en la mayoría de locales), símbolos de porcentaje (%), o notación científica.</p>
+            <p><strong>Recomendación práctica:</strong> Prepare sus datos en una hoja de cálculo primero, realizando allí todas las normalizaciones y conversiones necesarias, para luego transferir los valores ya procesados a la herramienta.</p>
+
+            <h2>¿Cómo agrego texto o anotaciones?</h2>
+            <p><strong>Respuesta:</strong> La herramienta permite personalizar los nombres de los componentes A, B y C en el panel de configuración. Puede cambiar estos nombres a los términos específicos de su disciplina. Cada punto de datos recibe automáticamente un identificador único que aparece en la tabla de puntos agregados.</p>
+            <p><strong>Limitaciones:</strong> Actualmente no es posible agregar anotaciones de texto libre sobre puntos específicos directamente en el diagrama. Las series también pueden ser nombradas de manera descriptiva para facilitar identificación.</p>
+            <p><strong>Recomendación práctica:</strong> Use nombres de series descriptivos (ej: "Muestra_Zona_A", "Experimento_Control") para que el diagrama sea autodocumentado. Para anotaciones detalladas, considere incluir una tabla explicativa junto con el diagrama en su documentación final.</p>
+
+            <h2>¿Cómo funciona la leyenda?</h2>
+            <p><strong>Respuesta:</strong> La leyenda es generada automáticamente y muestra:</p>
+            <ul>
+                <li>Nombre de cada serie de datos presente en el diagrama</li>
+                <li>Color asignado a cada serie</li>
+                <li>Tipo de marcador utilizado para los puntos de esa serie</li>
+            </ul>
+            <p><strong>Personalización:</strong> Los colores y marcadores pueden ser configurados antes de agregar puntos. La leyenda se actualiza automáticamente cuando se agregan o se remueven series.</p>
+            <p><strong>Recomendación práctica:</strong> Elija colores que tengan suficiente contraste entre sí para mejorar la legibilidad. Use marcadores diferentes si planea imprimir en blanco y negro.</p>
+
+            <h2>¿Existe un límite en la cantidad de puntos?</h2>
+            <p><strong>Respuesta:</strong> Técnicamente, la herramienta puede manejar un número considerable de puntos. Sin embargo, la legibilidad visual comienza a deteriorarse cuando hay demasiados puntos superpuestos.</p>
+            <p><strong>Límites prácticos:</strong> Se recomienda mantener menos de 100 puntos por series para que el diagrama permanezca legible. Si tiene más datos, considere usar técnicas de agregación o filtrado.</p>
+            <p><strong>Recomendación práctica:</strong> Si tiene muchos puntos de una misma serie, considere representar solo un subconjunto o usar un diagrama de densidad de contornos conceptualmente equivalente para mejor visualización.</p>
+
+            <h2>¿Qué hago si necesito una función que no existe?</h2>
+            <p><strong>Respuesta:</strong> La herramienta está diseñada para cubrir las necesidades básicas de visualización de diagramas ternarios. Funcionalidades avanzadas como análisis estadístico, interpolación, o modelado matemático requieren herramientas especializadas adicionales.</p>
+            <p><strong>Alternativas:</strong> Para necesidades más complejas, considere usar software especializado de análisis gráfico o estadístico que incluya módulos de diagramas ternarios, o procese sus datos en software de cálculo antes de visualizar.</p>
+            <p><strong>Recomendación práctica:</strong> Describa claramente los datos que necesita visualizar. Es posible que funcionalidades aparentemente no disponibles puedan alcanzarse con uso creativo de las herramientas actuales.</p>
+
+            <h2>¿Puedo usar la herramienta con fines académicos?</h2>
+            <p><strong>Respuesta:</strong> Sí, la herramienta está explícitamente diseñada para uso académico y educativo. Es completamente apropiada para:</p>
+            <ul>
+                <li>Proyectos de investigación universitaria</li>
+                <li>Tesis de pregrado o posgrado</li>
+                <li>Trabajos de laboratorio y prácticas</li>
+                <li>Propósitos educativos en cursos</li>
+                <li>Publicaciones científicas y académicas</li>
+            </ul>
+            <p><strong>Recomendación práctica:</strong> Al utilizar diagramas generados por la herramienta en documentos académicos o publicaciones, incluya un pie de figura descriptivo que explique claramente qué se está representando, las unidades de medida utilizadas, la escala del diagrama, y la fuente de los datos visualizados.</p>
+
+        </section>
+
+        <!-- ===============================================
+             SECCIÓN 5: API Y REFERENCIA TÉCNICA
+             =============================================== -->
+        <section id="api" class="doc-section">
+            <h1>5. API / Referencia Técnica</h1>
+
+            <h2>5.1 Visión general del sistema</h2>
+
+            <h3>Arquitectura conceptual</h3>
+            <p>La aplicación funciona mediante una arquitectura cliente-servidor. El navegador web del usuario (cliente) proporciona la interfaz de entrada de datos y visualización. Un servidor de aplicaciones (backend) procesa los datos, realiza cálculos de proyección de coordenadas, y genera la representación gráfica del diagrama ternario.</p>
+
+            <h3>Flujo general del proceso</h3>
+            <p>El flujo de procesamiento sigue estos pasos:</p>
+            <ol>
+                <li>El usuario ingresa valores numéricos correspondientes a los tres componentes en la interfaz web.</li>
+                <li>El cliente valida que los datos sean numéricos y cumplan restricciones básicas.</li>
+                <li>El usuario solicita la generación del diagrama mediante un comando de actualización.</li>
+                <li>Los datos se envían al servidor en formato estructurado.</li>
+                <li>El servidor valida completamente los datos (cumplimiento de suma, rango de valores, etc.).</li>
+                <li>El servidor calcula las coordenadas proyectadas de cada punto en el espacio 2D del triángulo.</li>
+                <li>El servidor genera una representación gráfica del diagrama ternario con todos los puntos ubicados correctamente.</li>
+                <li>La representación se transmite al cliente y se muestra en la pantalla.</li>
+            </ol>
+
+            <h2>5.2 Entradas del sistema</h2>
+
+            <h3>Tipo de datos</h3>
+            <p>El sistema acepta datos de entrada en forma de triples de números reales. Cada triple (A, B, C) representa la composición de un punto en el diagrama ternario. Adicionalmente, el usuario especifica:</p>
+            <ul>
+                <li><strong>Escala:</strong> Un número real positivo que representa el valor máximo a lo largo de cada eje (típicamente 100).</li>
+                <li><strong>Nombres de componentes:</strong> Cadenas de texto que etiquetan cada eje.</li>
+                <li><strong>Identificadores de serie:</strong> Cadenas que agrupan conjuntos de puntos relacionados.</li>
+                <li><strong>Atributos visuales:</strong> Color de serie, tipo de marcador, tamaño de punto.</li>
+            </ul>
+
+            <h3>Suposiciones matemáticas</h3>
+            <p>El sistema asume que:</p>
+            <ul>
+                <li>Los datos están normalizados: A + B + C = Escala (con tolerancia de redondeo).</li>
+                <li>Todos los valores son no negativos.</li>
+                <li>La escala es un número positivo.</li>
+                <li>Los datos representan composiciones ternarias cerradas (proporciones de un total fijo).</li>
+                <li>No hay correlación temporal implícita en el orden de ingreso de datos (a menos que se especifique mediante series).</li>
+            </ul>
+
+            <h3>Convenciones utilizadas</h3>
+            <p>Por convención, los tres componentes se refieren como A (izquierda), B (derecha) y C (base) del triángulo. Las proporciones se expresan como fracciones del valor de escala. Las coordenadas baricéntricas se utilizan internamente para cálculo de posiciones.</p>
+
+            <h2>5.3 Salidas generadas</h2>
+
+            <h3>Tipo de resultado</h3>
+            <p>El sistema genera un diagrama ternario en formato gráfico de raster (imagen bitmap). El diagrama incluye:</p>
+            <ul>
+                <li>Un triángulo equilátero con líneas de referencia internas.</li>
+                <li>Ejes etiquetados con nombres y escalas de porcentaje.</li>
+                <li>Símbolos representando cada punto de dato.</li>
+                <li>Líneas que conectan puntos de la misma serie (opcional).</li>
+                <li>Una leyenda que identifica las series.</li>
+                <li>Una grilla de referencia para facilitar lectura.</li>
+            </ul>
+
+            <h3>Qué representa</h3>
+            <p>El diagrama es una proyección bidimensional de datos ternarios. Cada punto en el diagrama representa unívocamente una composición de los tres componentes. La posición del punto es determinada mediante geometría baricéntrica: la distancia perpendicular desde el punto a cada lado del triángulo es proporcional al valor del componente opuesto a ese lado.</p>
+
+            <h3>Limitaciones de interpretación</h3>
+            <p>Es importante comprender que:</p>
+            <ul>
+                <li>El diagrama es una representación geométrica de proporciones, no una representación de cantidad absoluta.</li>
+                <li>Dos composiciones con proporciones idénticas pero cantidades diferentes aparecerán en la misma ubicación.</li>
+                <li>La proximidad de dos puntos en el diagrama indica similitud composicional, pero no implica relación causal.</li>
+                <li>El diagrama no proporciona información sobre propiedades químicas, físicas o funcionales de las composiciones representadas.</li>
+                <li>Extrapolaciones o predicciones de propiedades basadas únicamente en posición en el diagrama requieren justificación teórica adicional.</li>
+            </ul>
+
+            <h2>5.4 Consideraciones técnicas</h2>
+
+            <h3>Normalización</h3>
+            <p>La normalización es esencial para el funcionamiento correcto del sistema. Los datos deben ser normalizados a la escala especificada antes de ingresarlos. Si los datos originales tienen una suma diferente a la escala especificada, deben ser transformados matemáticamente. El sistema puede rechazar datos que no cumplan esta restricción fundamental.</p>
+
+            <h3>Precisión numérica</h3>
+            <p>El sistema utiliza aritmética de punto flotante estándar, lo que implica limitaciones inherentes en precisión. Pequeñas discrepancias debidas al redondeo son toleradas. Sin embargo, para datos que requieran alta precisión, se recomienda validar independientemente que los datos ingresados correspondan a los datos fuente originales.</p>
+
+            <h3>Advertencias importantes</h3>
+            <ul>
+                <li><strong>Validación de datos:</strong> La herramienta no valida la significancia científica de los datos. Es responsabilidad del usuario asegurar que los datos sean válidos y representativos.</li>
+                <li><strong>Rango de aplicabilidad:</strong> El diagrama ternario es apropiado solo para sistemas de tres variables interdependientes que suman un valor fijo. No usar para otros tipos de datos.</li>
+                <li><strong>Documentación de resultados:</strong> Al documentar resultados, siempre incluya información sobre la escala utilizada, la normalizando de datos, las series representadas, y las unidades o naturaleza de los componentes.</li>
+                <li><strong>Reproducibilidad:</strong> Para reproducibilidad, conserve los datos originales no normalizados además de los datos procesados utilizados para generar el diagrama.</li>
+            </ul>
+
+        </section>
+
+    </main>
+</div>
+
+<button id="theme-toggle" class="theme-toggle" title="Cambiar tema">🌙</button>
+
+<script src="/static/scripts.js"></script>
+</body>
+</html>
