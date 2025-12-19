@@ -1,4 +1,70 @@
 // ===============================
+// NAVBAR - Interactividad de Navegación
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Manejo del menú hamburguesa
+    const navbarToggle = document.getElementById("navbar-toggle");
+    const navbarMenu = document.getElementById("navbar-menu");
+    const docsToggle = document.getElementById("docs-toggle");
+    const docsMenu = document.getElementById("docs-menu");
+
+    // Abrir/cerrar menú hamburguesa
+    if (navbarToggle) {
+        navbarToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            navbarToggle.classList.toggle("active");
+            navbarMenu.classList.toggle("active");
+        });
+    }
+
+    // Cerrar menú cuando se hace clic en un enlace
+    const navbarLinks = document.querySelectorAll(".navbar-link:not(.dropdown-toggle)");
+    navbarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (navbarToggle && navbarToggle.classList.contains("active")) {
+                navbarToggle.classList.remove("active");
+                navbarMenu.classList.remove("active");
+            }
+        });
+    });
+
+    // Manejo del dropdown en móvil
+    if (docsToggle) {
+        docsToggle.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parentItem = docsToggle.closest(".navbar-item");
+                parentItem.classList.toggle("active");
+            }
+        });
+    }
+
+    // Cerrar dropdown en móvil cuando se selecciona un item
+    if (docsMenu) {
+        const dropdownItems = docsMenu.querySelectorAll(".dropdown-item");
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    const parentItem = docsToggle.closest(".navbar-item");
+                    parentItem.classList.remove("active");
+                }
+            });
+        });
+    }
+
+    // Cerrar menú cuando se hace clic fuera
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".navbar")) {
+            if (navbarToggle && navbarToggle.classList.contains("active")) {
+                navbarToggle.classList.remove("active");
+                navbarMenu.classList.remove("active");
+            }
+        }
+    });
+});
+
+// ===============================
 // FE-01: Estado único
 // ===============================
 const diagramState = {
