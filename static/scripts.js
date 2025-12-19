@@ -195,7 +195,6 @@ async function updateDiagram() {
     }
 
     spinner.style.display = "block";
-    errorDiv.textContent = "";
     if (resultImg.src) {
         URL.revokeObjectURL(resultImg.src);
     }
@@ -230,11 +229,23 @@ async function updateDiagram() {
         }
 
         const objectUrl = URL.createObjectURL(blob);
-        resultImg.src = objectUrl;
-        resultImg.onerror = () => {
+        
+        // Limpiar errores antes de intentar cargar la imagen
+        errorDiv.textContent = "";
+        
+        // Crear un handler de error antes de asignar src
+        const handleError = () => {
             errorDiv.textContent = "Error: No se puede cargar la imagen";
             URL.revokeObjectURL(objectUrl);
         };
+        
+        resultImg.onerror = handleError;
+        resultImg.onload = () => {
+            // Si carga exitosamente, remover el handler de error y limpiar mensaje de error
+            resultImg.onerror = null;
+            errorDiv.textContent = "";
+        };
+        resultImg.src = objectUrl;
 
     } catch (e) {
         errorDiv.textContent = "Error: " + e.message;

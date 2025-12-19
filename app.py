@@ -34,6 +34,12 @@ def generate_ternary_plot(config: dict) -> bytes:
 
         tax.boundary()
         
+        # Remover el marco negro (spines)
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
+        
         # Grilla con múltiplos de 10 para que sea divisible en porcentajes
         grid_step = max(scale // 10, 1)
         tax.gridlines(color="lightgray", multiple=grid_step, linewidth=0.8, alpha=0.6)
@@ -105,8 +111,8 @@ def generate_ternary_plot(config: dict) -> bytes:
 
         buffer = BytesIO()
         plt.savefig(buffer, format="png", bbox_inches="tight", dpi=100)
-        plt.close(fig)
         buffer.seek(0)
+        plt.close(fig)
 
         return buffer.getvalue()
     except Exception as e:
