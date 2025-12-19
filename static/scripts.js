@@ -201,14 +201,19 @@ async function updateDiagram() {
     resultImg.src = "";
 
     try {
+        console.log("📊 Enviando diagrama con estado:", diagramState);
+        
         const res = await fetch("/plot", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(diagramState)
         });
 
+        console.log("✅ Respuesta recibida:", res.status, res.statusText);
+
         if (!res.ok) {
             const text = await res.text();
+            console.error("❌ Error en respuesta:", text);
             let errorMessage;
             try {
                 const err = JSON.parse(text);
@@ -224,17 +229,21 @@ async function updateDiagram() {
         }
 
         const blob = await res.blob();
+        console.log("📦 Blob recibido, tamaño:", blob.size, "bytes");
+        
         if (blob.size === 0) {
             throw new Error("Imagen vacía recibida");
         }
 
         const objectUrl = URL.createObjectURL(blob);
+        console.log("🔗 Object URL creado:", objectUrl);
         
         // Limpiar errores antes de intentar cargar la imagen
         errorDiv.textContent = "";
         
         // Crear un handler de error antes de asignar src
         const handleError = () => {
+            console.error("❌ Error al cargar la imagen en el img tag");
             errorDiv.textContent = "Error: No se puede cargar la imagen";
             URL.revokeObjectURL(objectUrl);
         };
@@ -242,14 +251,16 @@ async function updateDiagram() {
         resultImg.onerror = handleError;
         resultImg.onload = () => {
             // Si carga exitosamente, remover el handler de error y limpiar mensaje de error
+            console.log("✅ Imagen cargada exitosamente");
             resultImg.onerror = null;
             errorDiv.textContent = "";
+            spinner.style.display = "none";
         };
         resultImg.src = objectUrl;
 
     } catch (e) {
+        console.error("❌ Error al actualizar diagrama:", e);
         errorDiv.textContent = "Error: " + e.message;
-        console.error("Error al actualizar diagrama:", e);
     } finally {
         spinner.style.display = "none";
     }
@@ -355,3 +366,34 @@ function downloadDiagram(format) {
 $("download-png").addEventListener("click", () => downloadDiagram("png"));
 $("download-jpg").addEventListener("click", () => downloadDiagram("jpg"));
 $("download-pdf").addEventListener("click", () => downloadDiagram("pdf"));
+
+// ===============================
+// Theme Toggle (Dark/Light Mode)
+// ===============================
+function initTheme() {
+    const isDarkMode = localStorage.getItem("theme") === "dark";
+    if (isDarkMode) {
+        document.documentElement.classList.add("dark-mode");
+        $("theme-toggle").textContent = "☀️";
+    } else {
+        document.documentElement.classList.remove("dark-mode");
+        $("theme-toggle").textContent = "🌙";
+    }
+}
+
+$("theme-toggle").addEventListener("click", () => {
+    const isDarkMode = document.documentElement.classList.contains("dark-mode");
+    
+    if (isDarkMode) {
+        document.documentElement.classList.remove("dark-mode");
+        localStorage.setItem("theme", "light");
+        $("theme-toggle").textContent = "🌙";
+    } else {
+        document.documentElement.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark");
+        $("theme-toggle").textContent = "☀️";
+    }
+});
+
+// Inicializar tema al cargar la página
+initTheme();

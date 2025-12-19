@@ -2,8 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagramas Ternarios</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script>
+        // Evitar flash de tema incorrecto
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
 </head>
 <body>
 
@@ -156,6 +163,9 @@
         <div id="spinner" class="spinner">Generando…</div>
         <div id="error" class="error"></div>
         <img id="result" alt="Diagrama ternario">
+        
+        <!-- Botón de tema -->
+        <button id="theme-toggle" class="theme-toggle" title="Cambiar tema">🌙</button>
     </main>
 
 </div>
